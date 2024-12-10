@@ -162,3 +162,7 @@ cython_debug/
 #.idea/
 ganjoor.s3db
 poems.txt
+cached_lm_GPT2Tokenizer_128_processed_poems.txt
+cached_lm_GPT2Tokenizer_128_processed_poems.txt.lock
+logs/
+poet_model/
