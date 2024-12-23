@@ -3,7 +3,6 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingArguments, EarlyStoppingCallback
 from data_preparation import prepare_dataset
 
-# بارگذاری تنظیمات
 with open("config/model_config.json", "r") as f:
     model_config = json.load(f)
 
