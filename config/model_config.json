@@ -1,6 +1,0 @@
-{
-  "model_name": "HooshvareLab/gpt2-fa",
-  "max_length": 128,
-  "pad_token": "<|pad|>",
-  "eos_token": "<|end|>"
-}
