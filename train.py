@@ -1,5 +1,5 @@
 import torch
-from transformers import GPT2Config, GPT2LMHeadModel, GPT2Tokenizer, Trainer, TrainingArguments
+from transformers import GPT2LMHeadModel, Trainer, TrainingArguments, AutoTokenizer
 from configs import config
 from utils import load_dataset
 import logging
@@ -7,7 +7,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 def train():
-    tokenizer = GPT2Tokenizer.from_pretrained(config.MODEL_NAME)
+    tokenizer = AutoTokenizer.from_pretrained(config.MODEL_NAME)
     model = GPT2LMHeadModel.from_pretrained(config.MODEL_NAME)
 
     dataset = load_dataset(tokenizer)
@@ -29,7 +29,7 @@ def train():
         args=training_args,
         train_dataset=dataset,
     )
-    trainer.train(resume_from_checkpoint=True)
+    trainer.train(resume_from_checkpoint=False)
     trainer.save_model(config.OUTPUT_DIR)
 
 if __name__ == "__main__":
