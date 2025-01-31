@@ -17,7 +17,7 @@ def load_model():
     model.to(device)
     return model, tokenizer
 
-def load_poems(file_path="poems.txt"):
+def load_poems(file_path="data/a.txt"):
     with open(file_path, "r", encoding="utf-8") as f:
         poems = f.read().split("\n")
     return poems
