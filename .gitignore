@@ -166,3 +166,4 @@ cached_lm_GPT2Tokenizer_128_processed_poems.txt
 cached_lm_GPT2Tokenizer_128_processed_poems.txt.lock
 logs/
 poet_model/
+data/poems*
