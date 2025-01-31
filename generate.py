@@ -1,7 +1,6 @@
 import torch
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 from configs import config
-import argparse
 
 
 class PoetryGenerator:
