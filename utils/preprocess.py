@@ -1,15 +1,17 @@
 import numpy as np
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras.utils import to_categorical
+import tensorflow as tf
 
-def load_and_preprocess_data(file_path):
+def load_and_preprocess_data(file_path, num_words=5000):
     with open(file_path, 'r', encoding='utf-8') as file:
         poems = file.readlines()
 
-    tokenizer = Tokenizer()
+    poems = [poem.strip() for poem in poems if poem.strip()]
+
+    tokenizer = Tokenizer(num_words=num_words)
     tokenizer.fit_on_texts(poems)
-    total_words = len(tokenizer.word_index) + 1
+    total_words = min(len(tokenizer.word_index) + 1, num_words)
 
     input_sequences = []
     for poem in poems:
@@ -23,6 +25,9 @@ def load_and_preprocess_data(file_path):
 
     X = input_sequences[:, :-1]
     y = input_sequences[:, -1]
-    y = to_categorical(y, num_classes=total_words)
+    y = tf.keras.utils.to_categorical(y, num_classes=total_words)
 
-    return X, y, tokenizer, max_sequence_len, total_words
+    dataset = tf.data.Dataset.from_tensor_slices((X, y))
+    dataset = dataset.batch(128).prefetch(tf.data.experimental.AUTOTUNE)
+
+    return dataset, tokenizer, max_sequence_len, total_words
