@@ -1,7 +1,7 @@
 import torch
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 from typing import Optional
-from conigs.poetry_config import PoetryConfig
+from configs.poetry_config import PoetryConfig
 from .trainer import CustomTrainer
 from data.dataset import PersianPoetryDataset
 

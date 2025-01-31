@@ -1,5 +1,5 @@
 from transformers import Trainer, TrainingArguments
-from conigs.poetry_config import PoetryConfig
+from configs.poetry_config import PoetryConfig
 from typing import Optional
 
 

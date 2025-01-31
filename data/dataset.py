@@ -2,7 +2,7 @@ import torch
 from torch.utils.data import Dataset
 import re
 from typing import List
-from conigs.poetry_config import PoetryConfig
+from configs.poetry_config import PoetryConfig
 
 class PersianPoetryDataset(Dataset):
     def __init__(self, tokenizer, poems: List[str], config: PoetryConfig):
