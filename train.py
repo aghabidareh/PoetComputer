@@ -1,7 +1,7 @@
 import torch
 from transformers import GPT2LMHeadModel, Trainer, TrainingArguments, AutoTokenizer
 from configs import config
-from utils import load_dataset
+from utils import loader
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -10,7 +10,7 @@ def train():
     tokenizer = AutoTokenizer.from_pretrained(config.MODEL_NAME)
     model = GPT2LMHeadModel.from_pretrained(config.MODEL_NAME)
 
-    dataset = load_dataset(tokenizer)
+    dataset = loader(tokenizer)
 
     training_args = TrainingArguments(
         output_dir=str(config.OUTPUT_DIR),

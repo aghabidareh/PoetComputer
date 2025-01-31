@@ -7,7 +7,7 @@ class Config:
     OUTPUT_DIR = Path("model")
 
     BATCH_SIZE = 8
-    EPOCHS = 10
+    EPOCHS = 3
     LR = 3e-4
     SAVE_STEPS = 1000
     LOGGING_STEPS = 100
