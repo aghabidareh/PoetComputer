@@ -1,12 +1,12 @@
 import torch
-from transformers import GPT2LMHeadModel, GPT2Tokenizer
+from transformers import GPT2LMHeadModel, AutoTokenizer
 from configs import config
 
 
 class PoetryGenerator:
     def __init__(self):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.tokenizer = GPT2Tokenizer.from_pretrained(config.MODEL_NAME)
+        self.tokenizer = AutoTokenizer.from_pretrained(config.MODEL_NAME)
         self.model = GPT2LMHeadModel.from_pretrained(config.OUTPUT_DIR).to(self.device)
 
     def generate(self, prompt, num_lines=config.DEFAULT_LINES):
